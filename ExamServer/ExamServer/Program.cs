@@ -10,7 +10,7 @@ namespace ExamServer
     {
         static void Main(string[] args)
         {
-        
+            Console.WriteLine("Sendt from kasperr_123@hotmail.com user");
         }
     }
 }
