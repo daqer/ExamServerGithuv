@@ -1,0 +1,10 @@
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\ExamDataAccess.dll.config
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\ExamDataAccess.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\ExamDataAccess.pdb
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\obj\Debug\ExamDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\obj\Debug\ExamDataAccess.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamDataAccess\obj\Debug\ExamDataAccess.pdb

@@ -14,7 +14,7 @@ namespace ExamService.Controllers
 {
     public class JudgesController : ApiController
     {
-        private ExamProjectTournamentEntities db = new ExamProjectTournamentEntities();
+        private db_ExamProjectTournamentEntities db = new db_ExamProjectTournamentEntities();
 
         // GET: api/Judges
         public IQueryable<tblJudge> GettblJudge()

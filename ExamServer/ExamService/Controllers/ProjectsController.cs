@@ -14,7 +14,7 @@ namespace ExamService.Controllers
 {
     public class ProjectsController : ApiController
     {
-        private ExamProjectTournamentEntities db = new ExamProjectTournamentEntities();
+        private db_ExamProjectTournamentEntities db = new db_ExamProjectTournamentEntities();
 
         // GET: api/Projects
         public IQueryable<tblProject> GettblProject()

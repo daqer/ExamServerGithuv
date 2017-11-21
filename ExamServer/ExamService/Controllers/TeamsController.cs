@@ -14,7 +14,7 @@ namespace ExamService.Controllers
 {
     public class TeamsController : ApiController
     {
-        private ExamProjectTournamentEntities db = new ExamProjectTournamentEntities();
+        private db_ExamProjectTournamentEntities db = new db_ExamProjectTournamentEntities();
 
         // GET: api/Teams
         public IQueryable<tblTeam> GettblTeam()

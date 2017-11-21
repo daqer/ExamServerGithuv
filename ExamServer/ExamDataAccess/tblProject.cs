@@ -7,27 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamDataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class tblProject
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblProject
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblProject()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblProject()
-        {
-            this.tblTeam = new HashSet<tblTeam>();
-        }
-    
-        public int fldProjectID { get; set; }
-        public Nullable<int> fldTournamentID { get; set; }
-        public string fldProjectName { get; set; }
-        public string fldDescription { get; set; }
-        public string fldReport { get; set; }
-    
-        public virtual tblTournament tblTournament { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblTeam> tblTeam { get; set; }
+        this.tblTeam = new HashSet<tblTeam>();
     }
+
+    public int fldProjectID { get; set; }
+    public Nullable<int> fldTournamentID { get; set; }
+    public string fldProjectName { get; set; }
+    public string fldDescription { get; set; }
+    public string fldReport { get; set; }
+
+    public virtual tblTournament tblTournament { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblTeam> tblTeam { get; set; }
 }

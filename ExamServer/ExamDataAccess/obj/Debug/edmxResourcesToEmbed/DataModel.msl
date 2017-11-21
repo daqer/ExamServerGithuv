@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamProjectTournamentModelStoreContainer" CdmEntityContainer="db_ExamProjectTournamentEntities">
+    <EntitySetMapping Name="tblAnswer">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblAnswer">
+        <MappingFragment StoreEntitySet="tblAnswer">
+          <ScalarProperty Name="fldAnswerID" ColumnName="fldAnswerID" />
+          <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
+          <ScalarProperty Name="fldJudgeID" ColumnName="fldJudgeID" />
+          <ScalarProperty Name="fldFirstQuestionScore" ColumnName="fldFirstQuestionScore" />
+          <ScalarProperty Name="fldSecondQuestionScore" ColumnName="fldSecondQuestionScore" />
+          <ScalarProperty Name="fldThirdQuestionScore" ColumnName="fldThirdQuestionScore" />
+          <ScalarProperty Name="fldFourthQuestionScore" ColumnName="fldFourthQuestionScore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblJudge">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblJudge">
+        <MappingFragment StoreEntitySet="tblJudge">
+          <ScalarProperty Name="fldJudgeID" ColumnName="fldJudgeID" />
+          <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+          <ScalarProperty Name="fldJudgeLetter" ColumnName="fldJudgeLetter" />
+          <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLogin">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblLogin">
+        <MappingFragment StoreEntitySet="tblLogin">
+          <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+          <ScalarProperty Name="fldUsername" ColumnName="fldUsername" />
+          <ScalarProperty Name="fldPassword" ColumnName="fldPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProject">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblProject">
+        <MappingFragment StoreEntitySet="tblProject">
+          <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+          <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+          <ScalarProperty Name="fldProjectName" ColumnName="fldProjectName" />
+          <ScalarProperty Name="fldDescription" ColumnName="fldDescription" />
+          <ScalarProperty Name="fldReport" ColumnName="fldReport" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuestionaire">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblQuestionaire">
+        <MappingFragment StoreEntitySet="tblQuestionaire">
+          <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
+          <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+          <ScalarProperty Name="fldFirstQuestion" ColumnName="fldFirstQuestion" />
+          <ScalarProperty Name="fldSecondQuestion" ColumnName="fldSecondQuestion" />
+          <ScalarProperty Name="fldThirdQuestion" ColumnName="fldThirdQuestion" />
+          <ScalarProperty Name="fldFourthQuestion" ColumnName="fldFourthQuestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTeam">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTeam">
+        <MappingFragment StoreEntitySet="tblTeam">
+          <ScalarProperty Name="fldTeamID" ColumnName="fldTeamID" />
+          <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+          <ScalarProperty Name="fldTeamName" ColumnName="fldTeamName" />
+          <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+          <ScalarProperty Name="fldTopic" ColumnName="fldTopic" />
+          <ScalarProperty Name="fldMembers" ColumnName="fldMembers" />
+          <ScalarProperty Name="fldLeaderName" ColumnName="fldLeaderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTournament">
+      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTournament">
+        <MappingFragment StoreEntitySet="tblTournament">
+          <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+          <ScalarProperty Name="fldTournamentName" ColumnName="fldTournamentName" />
+          <ScalarProperty Name="fldYear" ColumnName="fldYear" />
+          <ScalarProperty Name="fldStartDate" ColumnName="fldStartDate" />
+          <ScalarProperty Name="fldEndDate" ColumnName="fldEndDate" />
+          <ScalarProperty Name="fldStartTime" ColumnName="fldStartTime" />
+          <ScalarProperty Name="fldAddress" ColumnName="fldAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

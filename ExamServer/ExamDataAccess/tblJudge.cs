@@ -7,26 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExamDataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class tblJudge
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblJudge
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public tblJudge()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblJudge()
-        {
-            this.tblAnswer = new HashSet<tblAnswer>();
-        }
-    
-        public long fldJudgeID { get; set; }
-        public Nullable<int> fldTournamentID { get; set; }
-        public string fldJudgeLetter { get; set; }
-        public string fldPassword { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAnswer> tblAnswer { get; set; }
-        public virtual tblTournament tblTournament { get; set; }
+        this.tblAnswer = new HashSet<tblAnswer>();
     }
+
+    public long fldJudgeID { get; set; }
+    public Nullable<int> fldTournamentID { get; set; }
+    public string fldJudgeLetter { get; set; }
+    public Nullable<long> fldLoginID { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<tblAnswer> tblAnswer { get; set; }
+    public virtual tblLogin tblLogin { get; set; }
+    public virtual tblTournament tblTournament { get; set; }
 }

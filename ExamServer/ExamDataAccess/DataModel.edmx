@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExamProjectTournamentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAnswer">
+          <Key>
+            <PropertyRef Name="fldAnswerID" />
+          </Key>
+          <Property Name="fldAnswerID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fldQuestionaireID" Type="bigint" />
+          <Property Name="fldJudgeID" Type="bigint" />
+          <Property Name="fldFirstQuestionScore" Type="int" Nullable="false" />
+          <Property Name="fldSecondQuestionScore" Type="int" Nullable="false" />
+          <Property Name="fldThirdQuestionScore" Type="int" Nullable="false" />
+          <Property Name="fldFourthQuestionScore" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblJudge">
+          <Key>
+            <PropertyRef Name="fldJudgeID" />
+          </Key>
+          <Property Name="fldJudgeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fldTournamentID" Type="int" />
+          <Property Name="fldJudgeLetter" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="fldLoginID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="fldLoginID" />
+          </Key>
+          <Property Name="fldLoginID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fldUsername" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="fldPassword" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+          </Key>
+          <Property Name="fldProjectID" Type="int" Nullable="false" />
+          <Property Name="fldTournamentID" Type="int" />
+          <Property Name="fldProjectName" Type="varchar" MaxLength="50" />
+          <Property Name="fldDescription" Type="varchar" MaxLength="150" />
+          <Property Name="fldReport" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblQuestionaire">
+          <Key>
+            <PropertyRef Name="fldQuestionaireID" />
+          </Key>
+          <Property Name="fldQuestionaireID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fldTournamentID" Type="int" />
+          <Property Name="fldFirstQuestion" Type="varchar(max)" />
+          <Property Name="fldSecondQuestion" Type="varchar(max)" />
+          <Property Name="fldThirdQuestion" Type="varchar(max)" />
+          <Property Name="fldFourthQuestion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblTeam">
+          <Key>
+            <PropertyRef Name="fldTeamID" />
+          </Key>
+          <Property Name="fldTeamID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fldProjectID" Type="int" />
+          <Property Name="fldTeamName" Type="varchar" MaxLength="150" />
+          <Property Name="fldLoginID" Type="bigint" />
+          <Property Name="fldTopic" Type="varchar" MaxLength="40" />
+          <Property Name="fldMembers" Type="int" />
+          <Property Name="fldLeaderName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTournament">
+          <Key>
+            <PropertyRef Name="fldTournamentID" />
+          </Key>
+          <Property Name="fldTournamentID" Type="int" Nullable="false" />
+          <Property Name="fldTournamentName" Type="varchar" MaxLength="150" />
+          <Property Name="fldYear" Type="int" />
+          <Property Name="fldStartDate" Type="date" />
+          <Property Name="fldEndDate" Type="date" />
+          <Property Name="fldStartTime" Type="varchar" MaxLength="25" />
+          <Property Name="fldAddress" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Association Name="FK__tblAnswer__fldJu__1ED998B2">
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="0..1" />
+          <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJudge">
+              <PropertyRef Name="fldJudgeID" />
+            </Principal>
+            <Dependent Role="tblAnswer">
+              <PropertyRef Name="fldJudgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAnswer__fldQu__1DE57479">
+          <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="0..1" />
+          <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestionaire">
+              <PropertyRef Name="fldQuestionaireID" />
+            </Principal>
+            <Dependent Role="tblAnswer">
+              <PropertyRef Name="fldQuestionaireID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblJudge__fldLog__1B0907CE">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="0..1" />
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="fldLoginID" />
+            </Principal>
+            <Dependent Role="tblJudge">
+              <PropertyRef Name="fldLoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblJudge__fldTou__1A14E395">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblJudge">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProjec__fldTo__1273C1CD">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQuesti__fldTo__15502E78">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblQuestionaire">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTeam__fldLogi__22AA2996">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="0..1" />
+          <End Role="tblTeam" Type="Self.tblTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="fldLoginID" />
+            </Principal>
+            <Dependent Role="tblTeam">
+              <PropertyRef Name="fldLoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTeam__fldProj__21B6055D">
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="0..1" />
+          <End Role="tblTeam" Type="Self.tblTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProject">
+              <PropertyRef Name="fldProjectID" />
+            </Principal>
+            <Dependent Role="tblTeam">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExamProjectTournamentModelStoreContainer">
+          <EntitySet Name="tblAnswer" EntityType="Self.tblAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblJudge" EntityType="Self.tblJudge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProject" EntityType="Self.tblProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuestionaire" EntityType="Self.tblQuestionaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTeam" EntityType="Self.tblTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTournament" EntityType="Self.tblTournament" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblAnswer__fldJu__1ED998B2" Association="Self.FK__tblAnswer__fldJu__1ED998B2">
+            <End Role="tblJudge" EntitySet="tblJudge" />
+            <End Role="tblAnswer" EntitySet="tblAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAnswer__fldQu__1DE57479" Association="Self.FK__tblAnswer__fldQu__1DE57479">
+            <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
+            <End Role="tblAnswer" EntitySet="tblAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblJudge__fldLog__1B0907CE" Association="Self.FK__tblJudge__fldLog__1B0907CE">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblJudge" EntitySet="tblJudge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblJudge__fldTou__1A14E395" Association="Self.FK__tblJudge__fldTou__1A14E395">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblJudge" EntitySet="tblJudge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProjec__fldTo__1273C1CD" Association="Self.FK__tblProjec__fldTo__1273C1CD">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQuesti__fldTo__15502E78" Association="Self.FK__tblQuesti__fldTo__15502E78">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTeam__fldLogi__22AA2996" Association="Self.FK__tblTeam__fldLogi__22AA2996">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblTeam" EntitySet="tblTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTeam__fldProj__21B6055D" Association="Self.FK__tblTeam__fldProj__21B6055D">
+            <End Role="tblProject" EntitySet="tblProject" />
+            <End Role="tblTeam" EntitySet="tblTeam" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExamProjectTournamentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAnswer">
+          <Key>
+            <PropertyRef Name="fldAnswerID" />
+          </Key>
+          <Property Name="fldAnswerID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fldQuestionaireID" Type="Int64" />
+          <Property Name="fldJudgeID" Type="Int64" />
+          <Property Name="fldFirstQuestionScore" Type="Int32" Nullable="false" />
+          <Property Name="fldSecondQuestionScore" Type="Int32" Nullable="false" />
+          <Property Name="fldThirdQuestionScore" Type="Int32" Nullable="false" />
+          <Property Name="fldFourthQuestionScore" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblJudge" Relationship="Self.FK__tblAnswer__fldJu__1ED998B2" FromRole="tblAnswer" ToRole="tblJudge" />
+          <NavigationProperty Name="tblQuestionaire" Relationship="Self.FK__tblAnswer__fldQu__1DE57479" FromRole="tblAnswer" ToRole="tblQuestionaire" />
+        </EntityType>
+        <EntityType Name="tblJudge">
+          <Key>
+            <PropertyRef Name="fldJudgeID" />
+          </Key>
+          <Property Name="fldJudgeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fldTournamentID" Type="Int32" />
+          <Property Name="fldJudgeLetter" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fldLoginID" Type="Int64" />
+          <NavigationProperty Name="tblAnswer" Relationship="Self.FK__tblAnswer__fldJu__1ED998B2" FromRole="tblJudge" ToRole="tblAnswer" />
+          <NavigationProperty Name="tblLogin" Relationship="Self.FK__tblJudge__fldLog__1B0907CE" FromRole="tblJudge" ToRole="tblLogin" />
+          <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblJudge__fldTou__1A14E395" FromRole="tblJudge" ToRole="tblTournament" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="fldLoginID" />
+          </Key>
+          <Property Name="fldLoginID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fldUsername" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fldPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblJudge" Relationship="Self.FK__tblJudge__fldLog__1B0907CE" FromRole="tblLogin" ToRole="tblJudge" />
+          <NavigationProperty Name="tblTeam" Relationship="Self.FK__tblTeam__fldLogi__22AA2996" FromRole="tblLogin" ToRole="tblTeam" />
+        </EntityType>
+        <EntityType Name="tblProject">
+          <Key>
+            <PropertyRef Name="fldProjectID" />
+          </Key>
+          <Property Name="fldProjectID" Type="Int32" Nullable="false" />
+          <Property Name="fldTournamentID" Type="Int32" />
+          <Property Name="fldProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fldDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fldReport" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblProjec__fldTo__1273C1CD" FromRole="tblProject" ToRole="tblTournament" />
+          <NavigationProperty Name="tblTeam" Relationship="Self.FK__tblTeam__fldProj__21B6055D" FromRole="tblProject" ToRole="tblTeam" />
+        </EntityType>
+        <EntityType Name="tblQuestionaire">
+          <Key>
+            <PropertyRef Name="fldQuestionaireID" />
+          </Key>
+          <Property Name="fldQuestionaireID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fldTournamentID" Type="Int32" />
+          <Property Name="fldFirstQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fldSecondQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fldThirdQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fldFourthQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAnswer" Relationship="Self.FK__tblAnswer__fldQu__1DE57479" FromRole="tblQuestionaire" ToRole="tblAnswer" />
+          <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblQuesti__fldTo__15502E78" FromRole="tblQuestionaire" ToRole="tblTournament" />
+        </EntityType>
+        <EntityType Name="tblTeam">
+          <Key>
+            <PropertyRef Name="fldTeamID" />
+          </Key>
+          <Property Name="fldTeamID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fldProjectID" Type="Int32" />
+          <Property Name="fldTeamName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fldLoginID" Type="Int64" />
+          <Property Name="fldTopic" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="fldMembers" Type="Int32" />
+          <Property Name="fldLeaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblLogin" Relationship="Self.FK__tblTeam__fldLogi__22AA2996" FromRole="tblTeam" ToRole="tblLogin" />
+          <NavigationProperty Name="tblProject" Relationship="Self.FK__tblTeam__fldProj__21B6055D" FromRole="tblTeam" ToRole="tblProject" />
+        </EntityType>
+        <EntityType Name="tblTournament">
+          <Key>
+            <PropertyRef Name="fldTournamentID" />
+          </Key>
+          <Property Name="fldTournamentID" Type="Int32" Nullable="false" />
+          <Property Name="fldTournamentName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fldYear" Type="Int32" />
+          <Property Name="fldStartDate" Type="DateTime" Precision="0" />
+          <Property Name="fldEndDate" Type="DateTime" Precision="0" />
+          <Property Name="fldStartTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="fldAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblJudge" Relationship="Self.FK__tblJudge__fldTou__1A14E395" FromRole="tblTournament" ToRole="tblJudge" />
+          <NavigationProperty Name="tblProject" Relationship="Self.FK__tblProjec__fldTo__1273C1CD" FromRole="tblTournament" ToRole="tblProject" />
+          <NavigationProperty Name="tblQuestionaire" Relationship="Self.FK__tblQuesti__fldTo__15502E78" FromRole="tblTournament" ToRole="tblQuestionaire" />
+        </EntityType>
+        <Association Name="FK__tblAnswer__fldJu__1ED998B2">
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="0..1" />
+          <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblJudge">
+              <PropertyRef Name="fldJudgeID" />
+            </Principal>
+            <Dependent Role="tblAnswer">
+              <PropertyRef Name="fldJudgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAnswer__fldQu__1DE57479">
+          <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="0..1" />
+          <End Role="tblAnswer" Type="Self.tblAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblQuestionaire">
+              <PropertyRef Name="fldQuestionaireID" />
+            </Principal>
+            <Dependent Role="tblAnswer">
+              <PropertyRef Name="fldQuestionaireID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblJudge__fldLog__1B0907CE">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="0..1" />
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="fldLoginID" />
+            </Principal>
+            <Dependent Role="tblJudge">
+              <PropertyRef Name="fldLoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblJudge__fldTou__1A14E395">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblJudge">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTeam__fldLogi__22AA2996">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="0..1" />
+          <End Role="tblTeam" Type="Self.tblTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="fldLoginID" />
+            </Principal>
+            <Dependent Role="tblTeam">
+              <PropertyRef Name="fldLoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblProjec__fldTo__1273C1CD">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblProject">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTeam__fldProj__21B6055D">
+          <End Role="tblProject" Type="Self.tblProject" Multiplicity="0..1" />
+          <End Role="tblTeam" Type="Self.tblTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProject">
+              <PropertyRef Name="fldProjectID" />
+            </Principal>
+            <Dependent Role="tblTeam">
+              <PropertyRef Name="fldProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblQuesti__fldTo__15502E78">
+          <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
+          <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTournament">
+              <PropertyRef Name="fldTournamentID" />
+            </Principal>
+            <Dependent Role="tblQuestionaire">
+              <PropertyRef Name="fldTournamentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_ExamProjectTournamentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAnswer" EntityType="Self.tblAnswer" />
+          <EntitySet Name="tblJudge" EntityType="Self.tblJudge" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" />
+          <EntitySet Name="tblProject" EntityType="Self.tblProject" />
+          <EntitySet Name="tblQuestionaire" EntityType="Self.tblQuestionaire" />
+          <EntitySet Name="tblTeam" EntityType="Self.tblTeam" />
+          <EntitySet Name="tblTournament" EntityType="Self.tblTournament" />
+          <AssociationSet Name="FK__tblAnswer__fldJu__1ED998B2" Association="Self.FK__tblAnswer__fldJu__1ED998B2">
+            <End Role="tblJudge" EntitySet="tblJudge" />
+            <End Role="tblAnswer" EntitySet="tblAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAnswer__fldQu__1DE57479" Association="Self.FK__tblAnswer__fldQu__1DE57479">
+            <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
+            <End Role="tblAnswer" EntitySet="tblAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblJudge__fldLog__1B0907CE" Association="Self.FK__tblJudge__fldLog__1B0907CE">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblJudge" EntitySet="tblJudge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblJudge__fldTou__1A14E395" Association="Self.FK__tblJudge__fldTou__1A14E395">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblJudge" EntitySet="tblJudge" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTeam__fldLogi__22AA2996" Association="Self.FK__tblTeam__fldLogi__22AA2996">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblTeam" EntitySet="tblTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblProjec__fldTo__1273C1CD" Association="Self.FK__tblProjec__fldTo__1273C1CD">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblProject" EntitySet="tblProject" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTeam__fldProj__21B6055D" Association="Self.FK__tblTeam__fldProj__21B6055D">
+            <End Role="tblProject" EntitySet="tblProject" />
+            <End Role="tblTeam" EntitySet="tblTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblQuesti__fldTo__15502E78" Association="Self.FK__tblQuesti__fldTo__15502E78">
+            <End Role="tblTournament" EntitySet="tblTournament" />
+            <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExamProjectTournamentModelStoreContainer" CdmEntityContainer="db_ExamProjectTournamentEntities">
+          <EntitySetMapping Name="tblAnswer">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblAnswer">
+              <MappingFragment StoreEntitySet="tblAnswer">
+                <ScalarProperty Name="fldAnswerID" ColumnName="fldAnswerID" />
+                <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
+                <ScalarProperty Name="fldJudgeID" ColumnName="fldJudgeID" />
+                <ScalarProperty Name="fldFirstQuestionScore" ColumnName="fldFirstQuestionScore" />
+                <ScalarProperty Name="fldSecondQuestionScore" ColumnName="fldSecondQuestionScore" />
+                <ScalarProperty Name="fldThirdQuestionScore" ColumnName="fldThirdQuestionScore" />
+                <ScalarProperty Name="fldFourthQuestionScore" ColumnName="fldFourthQuestionScore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblJudge">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblJudge">
+              <MappingFragment StoreEntitySet="tblJudge">
+                <ScalarProperty Name="fldJudgeID" ColumnName="fldJudgeID" />
+                <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+                <ScalarProperty Name="fldJudgeLetter" ColumnName="fldJudgeLetter" />
+                <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogin">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+                <ScalarProperty Name="fldUsername" ColumnName="fldUsername" />
+                <ScalarProperty Name="fldPassword" ColumnName="fldPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProject">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblProject">
+              <MappingFragment StoreEntitySet="tblProject">
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+                <ScalarProperty Name="fldProjectName" ColumnName="fldProjectName" />
+                <ScalarProperty Name="fldDescription" ColumnName="fldDescription" />
+                <ScalarProperty Name="fldReport" ColumnName="fldReport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblQuestionaire">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblQuestionaire">
+              <MappingFragment StoreEntitySet="tblQuestionaire">
+                <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
+                <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+                <ScalarProperty Name="fldFirstQuestion" ColumnName="fldFirstQuestion" />
+                <ScalarProperty Name="fldSecondQuestion" ColumnName="fldSecondQuestion" />
+                <ScalarProperty Name="fldThirdQuestion" ColumnName="fldThirdQuestion" />
+                <ScalarProperty Name="fldFourthQuestion" ColumnName="fldFourthQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTeam">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTeam">
+              <MappingFragment StoreEntitySet="tblTeam">
+                <ScalarProperty Name="fldTeamID" ColumnName="fldTeamID" />
+                <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
+                <ScalarProperty Name="fldTeamName" ColumnName="fldTeamName" />
+                <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+                <ScalarProperty Name="fldTopic" ColumnName="fldTopic" />
+                <ScalarProperty Name="fldMembers" ColumnName="fldMembers" />
+                <ScalarProperty Name="fldLeaderName" ColumnName="fldLeaderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTournament">
+            <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTournament">
+              <MappingFragment StoreEntitySet="tblTournament">
+                <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
+                <ScalarProperty Name="fldTournamentName" ColumnName="fldTournamentName" />
+                <ScalarProperty Name="fldYear" ColumnName="fldYear" />
+                <ScalarProperty Name="fldStartDate" ColumnName="fldStartDate" />
+                <ScalarProperty Name="fldEndDate" ColumnName="fldEndDate" />
+                <ScalarProperty Name="fldStartTime" ColumnName="fldStartTime" />
+                <ScalarProperty Name="fldAddress" ColumnName="fldAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
