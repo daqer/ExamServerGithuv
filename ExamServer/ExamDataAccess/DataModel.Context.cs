@@ -7,27 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
-public partial class db_ExamProjectTournamentEntities : DbContext
+namespace ExamDataAccess
 {
-    public db_ExamProjectTournamentEntities()
-        : base("name=db_ExamProjectTournamentEntities")
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class db_ExamProjectTournamentEntities2 : DbContext
     {
+        public db_ExamProjectTournamentEntities2()
+            : base("name=db_ExamProjectTournamentEntities2")
+        {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
+        public virtual DbSet<tblAnswer> tblAnswer { get; set; }
+        public virtual DbSet<tblJudge> tblJudge { get; set; }
+        public virtual DbSet<tblLogin> tblLogin { get; set; }
+        public virtual DbSet<tblProject> tblProject { get; set; }
+        public virtual DbSet<tblQuestionaire> tblQuestionaire { get; set; }
+        public virtual DbSet<tblTeam> tblTeam { get; set; }
+        public virtual DbSet<tblTournament> tblTournament { get; set; }
     }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        throw new UnintentionalCodeFirstException();
-    }
-
-    public virtual DbSet<tblAnswer> tblAnswer { get; set; }
-    public virtual DbSet<tblJudge> tblJudge { get; set; }
-    public virtual DbSet<tblLogin> tblLogin { get; set; }
-    public virtual DbSet<tblProject> tblProject { get; set; }
-    public virtual DbSet<tblQuestionaire> tblQuestionaire { get; set; }
-    public virtual DbSet<tblTeam> tblTeam { get; set; }
-    public virtual DbSet<tblTournament> tblTournament { get; set; }
 }

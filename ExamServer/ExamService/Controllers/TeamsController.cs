@@ -8,12 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using ExamDataAccess;
 
 namespace ExamService.Controllers
 {
     public class TeamsController : ApiController
     {
-        private db_ExamProjectTournamentEntities db = new db_ExamProjectTournamentEntities();
+        private db_ExamProjectTournamentEntities2 db = new db_ExamProjectTournamentEntities2();
 
         // GET: api/Teams
         public IQueryable<tblTeam> GettblTeam()

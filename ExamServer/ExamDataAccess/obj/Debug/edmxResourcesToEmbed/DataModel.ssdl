@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ExamProjectTournamentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="db_ExamProjectTournamentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="tblAnswer">
     <Key>
       <PropertyRef Name="fldAnswerID" />
@@ -26,8 +26,8 @@
       <PropertyRef Name="fldLoginID" />
     </Key>
     <Property Name="fldLoginID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fldUsername" Type="varchar" MaxLength="75" Nullable="false" />
-    <Property Name="fldPassword" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="fldUsername" Type="varchar" MaxLength="300" />
+    <Property Name="fldPassword" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tblProject">
     <Key>
@@ -36,8 +36,7 @@
     <Property Name="fldProjectID" Type="int" Nullable="false" />
     <Property Name="fldTournamentID" Type="int" />
     <Property Name="fldProjectName" Type="varchar" MaxLength="50" />
-    <Property Name="fldDescription" Type="varchar" MaxLength="150" />
-    <Property Name="fldReport" Type="varchar(max)" />
+    <Property Name="Data" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="tblQuestionaire">
     <Key>
@@ -56,8 +55,8 @@
     </Key>
     <Property Name="fldTeamID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fldProjectID" Type="int" />
-    <Property Name="fldTeamName" Type="varchar" MaxLength="150" />
     <Property Name="fldLoginID" Type="bigint" />
+    <Property Name="fldTeamName" Type="varchar" MaxLength="150" />
     <Property Name="fldTopic" Type="varchar" MaxLength="40" />
     <Property Name="fldMembers" Type="int" />
     <Property Name="fldLeaderName" Type="varchar" MaxLength="50" />
@@ -122,7 +121,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblProjec__fldTo__1273C1CD">
+  <Association Name="FK__tblProjec__fldTo__145C0A3F">
     <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
     <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
     <ReferentialConstraint>
@@ -134,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblQuesti__fldTo__15502E78">
+  <Association Name="FK__tblQuesti__fldTo__173876EA">
     <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
     <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="*" />
     <ReferentialConstraint>
@@ -170,7 +169,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ExamProjectTournamentModelStoreContainer">
+  <EntityContainer Name="db_ExamProjectTournamentModelStoreContainer">
     <EntitySet Name="tblAnswer" EntityType="Self.tblAnswer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblJudge" EntityType="Self.tblJudge" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
@@ -194,11 +193,11 @@
       <End Role="tblTournament" EntitySet="tblTournament" />
       <End Role="tblJudge" EntitySet="tblJudge" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblProjec__fldTo__1273C1CD" Association="Self.FK__tblProjec__fldTo__1273C1CD">
+    <AssociationSet Name="FK__tblProjec__fldTo__145C0A3F" Association="Self.FK__tblProjec__fldTo__145C0A3F">
       <End Role="tblTournament" EntitySet="tblTournament" />
       <End Role="tblProject" EntitySet="tblProject" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblQuesti__fldTo__15502E78" Association="Self.FK__tblQuesti__fldTo__15502E78">
+    <AssociationSet Name="FK__tblQuesti__fldTo__173876EA" Association="Self.FK__tblQuesti__fldTo__173876EA">
       <End Role="tblTournament" EntitySet="tblTournament" />
       <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
     </AssociationSet>

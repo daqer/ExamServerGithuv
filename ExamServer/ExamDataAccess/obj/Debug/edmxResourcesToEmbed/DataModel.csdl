@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ExamProjectTournamentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="db_ExamProjectTournamentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="tblAnswer">
     <Key>
       <PropertyRef Name="fldAnswerID" />
@@ -31,8 +31,8 @@
       <PropertyRef Name="fldLoginID" />
     </Key>
     <Property Name="fldLoginID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="fldUsername" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="fldPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fldUsername" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="fldPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblJudge" Relationship="Self.FK__tblJudge__fldLog__1B0907CE" FromRole="tblLogin" ToRole="tblJudge" />
     <NavigationProperty Name="tblTeam" Relationship="Self.FK__tblTeam__fldLogi__22AA2996" FromRole="tblLogin" ToRole="tblTeam" />
   </EntityType>
@@ -43,9 +43,8 @@
     <Property Name="fldProjectID" Type="Int32" Nullable="false" />
     <Property Name="fldTournamentID" Type="Int32" />
     <Property Name="fldProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fldDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="fldReport" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblProjec__fldTo__1273C1CD" FromRole="tblProject" ToRole="tblTournament" />
+    <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblProjec__fldTo__145C0A3F" FromRole="tblProject" ToRole="tblTournament" />
     <NavigationProperty Name="tblTeam" Relationship="Self.FK__tblTeam__fldProj__21B6055D" FromRole="tblProject" ToRole="tblTeam" />
   </EntityType>
   <EntityType Name="tblQuestionaire">
@@ -59,7 +58,7 @@
     <Property Name="fldThirdQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="fldFourthQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblAnswer" Relationship="Self.FK__tblAnswer__fldQu__1DE57479" FromRole="tblQuestionaire" ToRole="tblAnswer" />
-    <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblQuesti__fldTo__15502E78" FromRole="tblQuestionaire" ToRole="tblTournament" />
+    <NavigationProperty Name="tblTournament" Relationship="Self.FK__tblQuesti__fldTo__173876EA" FromRole="tblQuestionaire" ToRole="tblTournament" />
   </EntityType>
   <EntityType Name="tblTeam">
     <Key>
@@ -67,8 +66,8 @@
     </Key>
     <Property Name="fldTeamID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fldProjectID" Type="Int32" />
-    <Property Name="fldTeamName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="fldLoginID" Type="Int64" />
+    <Property Name="fldTeamName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="fldTopic" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="fldMembers" Type="Int32" />
     <Property Name="fldLeaderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -87,8 +86,8 @@
     <Property Name="fldStartTime" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="fldAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblJudge" Relationship="Self.FK__tblJudge__fldTou__1A14E395" FromRole="tblTournament" ToRole="tblJudge" />
-    <NavigationProperty Name="tblProject" Relationship="Self.FK__tblProjec__fldTo__1273C1CD" FromRole="tblTournament" ToRole="tblProject" />
-    <NavigationProperty Name="tblQuestionaire" Relationship="Self.FK__tblQuesti__fldTo__15502E78" FromRole="tblTournament" ToRole="tblQuestionaire" />
+    <NavigationProperty Name="tblProject" Relationship="Self.FK__tblProjec__fldTo__145C0A3F" FromRole="tblTournament" ToRole="tblProject" />
+    <NavigationProperty Name="tblQuestionaire" Relationship="Self.FK__tblQuesti__fldTo__173876EA" FromRole="tblTournament" ToRole="tblQuestionaire" />
   </EntityType>
   <Association Name="FK__tblAnswer__fldJu__1ED998B2">
     <End Role="tblJudge" Type="Self.tblJudge" Multiplicity="0..1" />
@@ -150,7 +149,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblProjec__fldTo__1273C1CD">
+  <Association Name="FK__tblProjec__fldTo__145C0A3F">
     <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
     <End Role="tblProject" Type="Self.tblProject" Multiplicity="*" />
     <ReferentialConstraint>
@@ -174,7 +173,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tblQuesti__fldTo__15502E78">
+  <Association Name="FK__tblQuesti__fldTo__173876EA">
     <End Role="tblTournament" Type="Self.tblTournament" Multiplicity="0..1" />
     <End Role="tblQuestionaire" Type="Self.tblQuestionaire" Multiplicity="*" />
     <ReferentialConstraint>
@@ -186,7 +185,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="db_ExamProjectTournamentEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="db_ExamProjectTournamentEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tblAnswer" EntityType="Self.tblAnswer" />
     <EntitySet Name="tblJudge" EntityType="Self.tblJudge" />
     <EntitySet Name="tblLogin" EntityType="Self.tblLogin" />
@@ -214,7 +213,7 @@
       <End Role="tblLogin" EntitySet="tblLogin" />
       <End Role="tblTeam" EntitySet="tblTeam" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblProjec__fldTo__1273C1CD" Association="Self.FK__tblProjec__fldTo__1273C1CD">
+    <AssociationSet Name="FK__tblProjec__fldTo__145C0A3F" Association="Self.FK__tblProjec__fldTo__145C0A3F">
       <End Role="tblTournament" EntitySet="tblTournament" />
       <End Role="tblProject" EntitySet="tblProject" />
     </AssociationSet>
@@ -222,7 +221,7 @@
       <End Role="tblProject" EntitySet="tblProject" />
       <End Role="tblTeam" EntitySet="tblTeam" />
     </AssociationSet>
-    <AssociationSet Name="FK__tblQuesti__fldTo__15502E78" Association="Self.FK__tblQuesti__fldTo__15502E78">
+    <AssociationSet Name="FK__tblQuesti__fldTo__173876EA" Association="Self.FK__tblQuesti__fldTo__173876EA">
       <End Role="tblTournament" EntitySet="tblTournament" />
       <End Role="tblQuestionaire" EntitySet="tblQuestionaire" />
     </AssociationSet>

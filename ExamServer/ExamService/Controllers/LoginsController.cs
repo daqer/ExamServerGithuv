@@ -8,12 +8,13 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using ExamDataAccess;
 
 namespace ExamService.Controllers
 {
     public class LoginsController : ApiController
     {
-        private db_ExamProjectTournamentEntities db = new db_ExamProjectTournamentEntities();
+        private db_ExamProjectTournamentEntities2 db = new db_ExamProjectTournamentEntities2();
 
         // GET: api/Logins
         public IQueryable<tblLogin> GettblLogin()
@@ -23,7 +24,7 @@ namespace ExamService.Controllers
 
         // GET: api/Logins/5
         [ResponseType(typeof(tblLogin))]
-        public IHttpActionResult GettblLogin(long id)
+        public IHttpActionResult GettblLogin(int id)
         {
             tblLogin tblLogin = db.tblLogin.Find(id);
             if (tblLogin == null)
@@ -33,6 +34,33 @@ namespace ExamService.Controllers
 
             return Ok(tblLogin);
         }
+        [ResponseType(typeof(tblLogin))]
+        [Route("byUsername/{fldUsername}")]
+        public IHttpActionResult GetByUsername(string id)
+        {
+            tblLogin tblLogin = db.tblLogin.Where(n=> n.fldUsername==id).First();
+            if (tblLogin == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(tblLogin);
+        }
+
+        // GET: api/Logins/5
+        //[ResponseType(typeof(tblLogin))]
+        //public IHttpActionResult GettblLogin(string username)
+        //{
+
+        //    tblLogin tblLogin = db.tblLogin.Find(db.tblLogin.Select(n => n.fldUsername == username));
+        //    if (tblLogin == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(tblLogin);
+        //}
+
 
         // PUT: api/Logins/5
         [ResponseType(typeof(void))]

@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class tblTeam
+namespace ExamDataAccess
 {
-    public long fldTeamID { get; set; }
-    public Nullable<int> fldProjectID { get; set; }
-    public string fldTeamName { get; set; }
-    public Nullable<long> fldLoginID { get; set; }
-    public string fldTopic { get; set; }
-    public Nullable<int> fldMembers { get; set; }
-    public string fldLeaderName { get; set; }
-
-    public virtual tblLogin tblLogin { get; set; }
-    public virtual tblProject tblProject { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class tblTeam
+    {
+        public long fldTeamID { get; set; }
+        public Nullable<int> fldProjectID { get; set; }
+        public Nullable<long> fldLoginID { get; set; }
+        public string fldTeamName { get; set; }
+        public string fldTopic { get; set; }
+        public Nullable<int> fldMembers { get; set; }
+        public string fldLeaderName { get; set; }
+    
+        public virtual tblLogin tblLogin { get; set; }
+        public virtual tblProject tblProject { get; set; }
+    }
 }

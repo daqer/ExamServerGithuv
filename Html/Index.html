@@ -3,17 +3,62 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/StyleSheet.css" />
+    <link rel="stylesheet" href="css/RegisterCss.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <title>Webpage</title>
 </head>
-<body>
-    <div class="row" id="LeftTop">
-        <form>
-            <div class="col">
-                <input type="text" value="Tournament 2017" />
-            </div>
-        </form>
+<body class="bg-dark">
+
+    <div class="container-fluid" id="TopRow">
+        <div class="col-lg-8" id="Headline">
+            <h1>Tournament 2017</h1>
+            <p>Address</p>
+            <p>StartDate</p>
+            <p>EndDate</p>
+        </div>
+
+        <div class="col-lg-4 text-center mt-4" id="LoginArea">
+            <form>
+                <div class="container-fluid mb-3">
+                    <div class="row">
+                        <label class="col-2 text-left">Username</label>
+                    </div>
+                    <div class="row">
+                        <input class="col-6" placeholder="Enter email here" type="email" />
+                    </div>
+                    <div class="row">
+                        <label class="col-2 text-left">Password</label>
+                    </div>
+                    <div class="row">
+                        <input class="col-6" placeholder="Enter password here" type="password" />
+                        <input class="col-3 ml-2 btn-dark border-primary border border-info opaque-overlay w-100"
+                               value="Login" type="button" />
+                    </div>
+                    <div class="row">
+                        <a href="Register.html">Register here</a>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
     </div>
 
+    <div class="col-lg 12" id="Photos">
 
+        <div class="container-fluid">
+            <img alt="Tournament" class="img-fluid" src="https://s-media-cache-ak0.pinimg.com/originals/68/28/8c/68288ca1ea7ef32130bedab9838dd89c.jpg" />
+        </div>
+    </div>
+
+    <div class="col-lg-12" id="ContactInformation">
+        <h1> Contact information</h1>
+        <p>   Pernille Knudsen<br />Addressevej 12<br />langt telefonnummer</p>
+
+    </div>
 </body>
 </html>

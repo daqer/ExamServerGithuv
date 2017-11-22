@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class tblAnswer
+namespace ExamDataAccess
 {
-    public long fldAnswerID { get; set; }
-    public Nullable<long> fldQuestionaireID { get; set; }
-    public Nullable<long> fldJudgeID { get; set; }
-    public int fldFirstQuestionScore { get; set; }
-    public int fldSecondQuestionScore { get; set; }
-    public int fldThirdQuestionScore { get; set; }
-    public int fldFourthQuestionScore { get; set; }
-
-    public virtual tblJudge tblJudge { get; set; }
-    public virtual tblQuestionaire tblQuestionaire { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class tblAnswer
+    {
+        public long fldAnswerID { get; set; }
+        public Nullable<long> fldQuestionaireID { get; set; }
+        public Nullable<long> fldJudgeID { get; set; }
+        public int fldFirstQuestionScore { get; set; }
+        public int fldSecondQuestionScore { get; set; }
+        public int fldThirdQuestionScore { get; set; }
+        public int fldFourthQuestionScore { get; set; }
+    
+        public virtual tblJudge tblJudge { get; set; }
+        public virtual tblQuestionaire tblQuestionaire { get; set; }
+    }
 }

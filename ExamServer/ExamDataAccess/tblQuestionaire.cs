@@ -7,25 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class tblQuestionaire
+namespace ExamDataAccess
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public tblQuestionaire()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class tblQuestionaire
     {
-        this.tblAnswer = new HashSet<tblAnswer>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblQuestionaire()
+        {
+            this.tblAnswer = new HashSet<tblAnswer>();
+        }
+    
+        public long fldQuestionaireID { get; set; }
+        public Nullable<int> fldTournamentID { get; set; }
+        public string fldFirstQuestion { get; set; }
+        public string fldSecondQuestion { get; set; }
+        public string fldThirdQuestion { get; set; }
+        public string fldFourthQuestion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblAnswer> tblAnswer { get; set; }
+        public virtual tblTournament tblTournament { get; set; }
     }
-
-    public long fldQuestionaireID { get; set; }
-    public Nullable<int> fldTournamentID { get; set; }
-    public string fldFirstQuestion { get; set; }
-    public string fldSecondQuestion { get; set; }
-    public string fldThirdQuestion { get; set; }
-    public string fldFourthQuestion { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<tblAnswer> tblAnswer { get; set; }
-    public virtual tblTournament tblTournament { get; set; }
 }

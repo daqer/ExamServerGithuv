@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ExamProjectTournamentModelStoreContainer" CdmEntityContainer="db_ExamProjectTournamentEntities">
+  <EntityContainerMapping StorageEntityContainer="db_ExamProjectTournamentModelStoreContainer" CdmEntityContainer="db_ExamProjectTournamentEntities2">
     <EntitySetMapping Name="tblAnswer">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblAnswer">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblAnswer">
         <MappingFragment StoreEntitySet="tblAnswer">
           <ScalarProperty Name="fldAnswerID" ColumnName="fldAnswerID" />
           <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
@@ -15,7 +15,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblJudge">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblJudge">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblJudge">
         <MappingFragment StoreEntitySet="tblJudge">
           <ScalarProperty Name="fldJudgeID" ColumnName="fldJudgeID" />
           <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
@@ -25,7 +25,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblLogin">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblLogin">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblLogin">
         <MappingFragment StoreEntitySet="tblLogin">
           <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
           <ScalarProperty Name="fldUsername" ColumnName="fldUsername" />
@@ -34,18 +34,17 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblProject">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblProject">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblProject">
         <MappingFragment StoreEntitySet="tblProject">
           <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
           <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
           <ScalarProperty Name="fldProjectName" ColumnName="fldProjectName" />
-          <ScalarProperty Name="fldDescription" ColumnName="fldDescription" />
-          <ScalarProperty Name="fldReport" ColumnName="fldReport" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblQuestionaire">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblQuestionaire">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblQuestionaire">
         <MappingFragment StoreEntitySet="tblQuestionaire">
           <ScalarProperty Name="fldQuestionaireID" ColumnName="fldQuestionaireID" />
           <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
@@ -57,12 +56,12 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblTeam">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTeam">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblTeam">
         <MappingFragment StoreEntitySet="tblTeam">
           <ScalarProperty Name="fldTeamID" ColumnName="fldTeamID" />
           <ScalarProperty Name="fldProjectID" ColumnName="fldProjectID" />
-          <ScalarProperty Name="fldTeamName" ColumnName="fldTeamName" />
           <ScalarProperty Name="fldLoginID" ColumnName="fldLoginID" />
+          <ScalarProperty Name="fldTeamName" ColumnName="fldTeamName" />
           <ScalarProperty Name="fldTopic" ColumnName="fldTopic" />
           <ScalarProperty Name="fldMembers" ColumnName="fldMembers" />
           <ScalarProperty Name="fldLeaderName" ColumnName="fldLeaderName" />
@@ -70,7 +69,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblTournament">
-      <EntityTypeMapping TypeName="ExamProjectTournamentModel.tblTournament">
+      <EntityTypeMapping TypeName="db_ExamProjectTournamentModel.tblTournament">
         <MappingFragment StoreEntitySet="tblTournament">
           <ScalarProperty Name="fldTournamentID" ColumnName="fldTournamentID" />
           <ScalarProperty Name="fldTournamentName" ColumnName="fldTournamentName" />

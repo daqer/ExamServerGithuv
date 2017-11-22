@@ -53,3 +53,7 @@ C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\
 C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\obj\Debug\ExamService.csproj.CoreCompileInputs.cache
 C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\obj\Debug\ExamService.dll
 C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\obj\Debug\ExamService.pdb
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\Kasper Jørgensen\Source\Repos\ExamServerGithuv\ExamServer\ExamService\bin\System.Diagnostics.DiagnosticSource.xml

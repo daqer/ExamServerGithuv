@@ -7,24 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class tblLogin
+namespace ExamDataAccess
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public tblLogin()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class tblLogin
     {
-        this.tblJudge = new HashSet<tblJudge>();
-        this.tblTeam = new HashSet<tblTeam>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblLogin()
+        {
+            this.tblJudge = new HashSet<tblJudge>();
+            this.tblTeam = new HashSet<tblTeam>();
+        }
+    
+        public long fldLoginID { get; set; }
+        public string fldUsername { get; set; }
+        public string fldPassword { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblJudge> tblJudge { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTeam> tblTeam { get; set; }
     }
-
-    public long fldLoginID { get; set; }
-    public string fldUsername { get; set; }
-    public string fldPassword { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<tblJudge> tblJudge { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<tblTeam> tblTeam { get; set; }
 }

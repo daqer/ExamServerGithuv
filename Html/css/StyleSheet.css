@@ -1,0 +1,42 @@
+﻿body {
+    background-color: lightgray;
+    font-family:Arial;
+}
+
+#TopRow {
+    background-color: lightblue;
+}
+
+#Photos {
+    background-color: dimgrey
+}
+
+.bkcolor{
+    background-color: blue;
+}
+
+#LoginArea {
+}
+
+.image {
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+}
+
+#ContactInformation {
+    background-color: lightblue;
+}
+
+#contactLabel {
+    background-color: white;
+}
+
+#ContactInformationText {
+}
+
+.Information {
+    border: ridge;
+    background-color: ghostwhite;
+    color: black;
+}
